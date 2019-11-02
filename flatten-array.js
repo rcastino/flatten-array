@@ -16,7 +16,5 @@ const flattenArray = (array) => {
     }, []);
 };
 
-//exports.flattenArray = flattenArray;
-
 // exports the function above so that other modules can use them
 module.exports.flattenArray = flattenArray;
