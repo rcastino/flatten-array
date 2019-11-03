@@ -8,11 +8,12 @@
  */
 
 const assert = require('assert');
+const {AssertionError} = require('assert');
 const fa = require('../flatten-array');
 
 /**
  * The following test suit is used to test the flattenArray function.
- * The test cases are organized in two test suites.
+ * The test cases are organized in three test suites.
  */
 describe('TEST flattenArray function', function () {
 
@@ -28,7 +29,6 @@ describe('TEST flattenArray function', function () {
         it('simple multi-element array: [113,4,5,1,68,7] -> [113,4,5,1,68,7]', function () {
             assert.equal(JSON.stringify(fa.flattenArray([113, 4, 5, 1, 68, 7])), '[113,4,5,1,68,7]');
         });
-
     });
 
     describe('Arrays of arbitrarily nested arrays: multi-dimensional array', function () {
@@ -49,6 +49,34 @@ describe('TEST flattenArray function', function () {
                 }
             }
             assert.equal(JSON.stringify(fa.flattenArray(matrix)), '[0,1,2,1,2,3,2,3,4]');
+        });
+    });
+
+    describe('Throw an error when called with invalid input: not an array', function () {
+        it('string argument: "hello" -> exc', () => {
+            try {
+                fa.flattenArray("hello"); // this should fail
+                assert.fail('expected exception not thrown');
+            } catch (e) {
+                // this catches all errors, those thrown by the function under test and those thrown by assert.fail
+                if (e instanceof AssertionError) {
+                    throw e;
+                }
+                assert.ok(true);
+            }
+        });
+
+        it('number: 123 -> exc', () => {
+            try {
+                fa.flattenArray(123); // this should fail
+                assert.fail('expected exception not thrown');
+            } catch (e) {
+                // this catches all errors, those thrown by the function under test and those thrown by assert.fail
+                if (e instanceof AssertionError) {
+                    throw e;
+                }
+                assert.ok(true);
+            }
         });
     });
 

@@ -1,10 +1,10 @@
 /*
- * This is a simple code that flatten an array of arbitrarily nested arrays of integers into a flat array of integers
+ * This is a simple code that defines a function to flatten an array of arbitrarily nested arrays (e.g. integers)
  * in Node.js.
  */
 
 /**
- * Flatten an array of arbitrarily nested arrays of integers into a flat array of integers.
+ * Flattens an array of arbitrarily nested arrays of integers into a flat array of integers.
  * Example. Input: [[1,2,[3]],4] -> Output: [1,2,3,4].
  *
  * @param array The input array to be processed
